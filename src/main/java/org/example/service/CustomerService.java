@@ -5,8 +5,8 @@ import lombok.ToString;
 import org.example.dao.audit.model.CustomRevisionEntity;
 import org.example.dao.entity.Customer;
 import org.example.dao.entity.CustomerHistory;
-import org.example.dao.repo.ICustomerHistoryRepository;
-import org.example.dao.repo.ICustomerRepository;
+import org.example.dao.repo.CustomerHistoryRepository;
+import org.example.dao.repo.CustomerRepository;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -18,8 +18,8 @@ import java.util.UUID;
 @ToString
 public class CustomerService {
 
-    private final ICustomerRepository customerRepository;
-    private final ICustomerHistoryRepository historyRepository;
+    private final CustomerRepository customerRepository;
+    private final CustomerHistoryRepository historyRepository;
 
     public void updateName(UUID id, String name) {
         Optional<Customer> optional = customerRepository.findById(id);
