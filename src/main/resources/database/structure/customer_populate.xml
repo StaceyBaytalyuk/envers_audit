@@ -1,0 +1,12 @@
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.5.xsd">
+
+    <changeSet id="1613158" author="dn021299baa" runOnChange="true">
+        <sql>
+            INSERT INTO structural.customer (customer_id, name)
+            VALUES ('c2d29867-3d0b-d497-9191-18a9d8ee7830', 'John');
+        </sql>
+    </changeSet>
+
+</databaseChangeLog>
