@@ -1,10 +1,10 @@
 package org.example.dao.repo;
 
-import org.example.dao.entity.CustomerHistory;
+import org.example.dao.entity.CustomerHistoryEntity;
 
 import java.util.List;
 import java.util.UUID;
 
 public interface CustomerHistoryRepository {
-    List<CustomerHistory> listCustomerRevisions(UUID customerId);
+    List<CustomerHistoryEntity> listCustomerRevisions(UUID customerId);
 }

@@ -1,9 +1,11 @@
 package org.example.dao.repo.impl;
 
+import jakarta.persistence.EntityManager;
+import jakarta.persistence.PersistenceContext;
 import org.example.dao.audit.query.AuditQueryResult;
 import org.example.dao.audit.query.AuditQueryUtils;
-import org.example.dao.entity.Customer;
-import org.example.dao.entity.CustomerHistory;
+import org.example.dao.entity.CustomerEntity;
+import org.example.dao.entity.CustomerHistoryEntity;
 import org.example.dao.repo.CustomerHistoryRepository;
 import org.hibernate.envers.AuditReader;
 import org.hibernate.envers.AuditReaderFactory;
@@ -12,11 +14,8 @@ import org.hibernate.envers.query.AuditQuery;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
 
-import javax.persistence.EntityManager;
-import javax.persistence.PersistenceContext;
 import java.util.List;
 import java.util.UUID;
-import java.util.stream.Collectors;
 
 @Component
 public class CustomerHistoryRepositoryImpl implements CustomerHistoryRepository {
@@ -26,30 +25,24 @@ public class CustomerHistoryRepositoryImpl implements CustomerHistoryRepository 
 
     @Override
     @Transactional(readOnly = true)
-    public List<CustomerHistory> listCustomerRevisions(UUID customerId) {
-
-        // Create the Audit Reader. It uses the EntityManager, which will be opened when
-        // starting the new Transation and closed when the Transaction finishes.
+    public List<CustomerHistoryEntity> listCustomerRevisions(UUID customerId) {
         AuditReader auditReader = AuditReaderFactory.get(entityManager);
 
-        // Create the Query:
         AuditQuery auditQuery = auditReader.createQuery()
-                .forRevisionsOfEntity(Customer.class, false, true)
+                .forRevisionsOfEntity(CustomerEntity.class, false, true)
                 .add(AuditEntity.id().eq(customerId));
 
-        // We don't operate on the untyped Results, but cast them into a List of AuditQueryResult:
-        return AuditQueryUtils.getAuditQueryResults(auditQuery, Customer.class).stream()
-                // Turn into the CustomerHistory Domain Object:
+        return AuditQueryUtils.getAuditQueryResults(auditQuery, CustomerEntity.class).stream()
                 .map(CustomerHistoryRepositoryImpl::getCustomerHistory)
-                // And collect the Results:
-                .collect(Collectors.toList());
+                .toList();
     }
 
-    private static CustomerHistory getCustomerHistory(AuditQueryResult<Customer> auditQueryResult) {
-        Customer customer = auditQueryResult.entity();
-        return new CustomerHistory(
-                customer.getId(),
-                customer.getName(),
+    private static CustomerHistoryEntity getCustomerHistory(AuditQueryResult<CustomerEntity> auditQueryResult) {
+        CustomerEntity customerEntity = auditQueryResult.entity();
+        return new CustomerHistoryEntity(
+                customerEntity.getId(),
+                customerEntity.getName(),
+                customerEntity.getCity(),
                 auditQueryResult.revision(),
                 auditQueryResult.type()
         );

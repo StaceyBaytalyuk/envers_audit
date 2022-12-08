@@ -5,9 +5,10 @@ import org.hibernate.envers.RevisionType;
 
 import java.util.UUID;
 
-public record CustomerHistory(
+public record CustomerHistoryEntity(
         UUID customerId,
-        String customerName, // и другие поля, чьи изменения нужно отобразить
+        String name,
+        String city,
         CustomRevisionEntity revisionInfo,
         RevisionType revisionType) {
 }

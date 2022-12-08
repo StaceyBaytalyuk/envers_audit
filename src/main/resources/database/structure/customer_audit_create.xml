@@ -6,8 +6,9 @@
         <sql>
             CREATE TABLE if not exists structural.customer_audit
             (
-                customer_id text not null,
+                customer_id varchar not null,
                 name text not null,
+                city text not null,
                 revision_number bigint not null,
                 revision_type smallint not null
             );

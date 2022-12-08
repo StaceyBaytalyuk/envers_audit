@@ -6,9 +6,9 @@
         <sql>
             CREATE TABLE if not exists structural.revision_info
             (
-                revision_number bigint,
+                revision_number bigserial,
                 revision_timestamp timestamp without time zone not null,
-                CONSTRAINT revinfo_pkey PRIMARY KEY (revision_number)
+                CONSTRAINT revision_info_pk PRIMARY KEY (revision_number)
             );
 
             COMMENT ON TABLE structural.revision_info IS 'Дані аудиту';
