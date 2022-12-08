@@ -12,6 +12,6 @@ import javax.persistence.Table;
 @RevisionEntity(CustomerRevisionListener.class)
 @ToString
 @NoArgsConstructor
-@Table(schema = "structural", name = "revinfo")
+@Table(schema = "structural", name = "revision_info")
 public class SampleRevisionEntity extends CustomRevisionEntity {
 }

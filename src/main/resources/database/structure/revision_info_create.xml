@@ -4,16 +4,16 @@
 
     <changeSet id="1613158" author="dn021299baa" runOnChange="true">
         <sql>
-            CREATE TABLE if not exists structural.revinfo
+            CREATE TABLE if not exists structural.revision_info
             (
                 revision_number bigint,
                 revision_timestamp timestamp without time zone not null,
                 CONSTRAINT revinfo_pkey PRIMARY KEY (revision_number)
             );
 
-            COMMENT ON TABLE structural.revinfo IS 'Дані аудиту';
-            ALTER TABLE structural.revinfo OWNER TO postgres;
-            GRANT SELECT,UPDATE,DELETE,INSERT ON structural.revinfo TO postgres;
+            COMMENT ON TABLE structural.revision_info IS 'Дані аудиту';
+            ALTER TABLE structural.revision_info OWNER TO postgres;
+            GRANT SELECT,UPDATE,DELETE,INSERT ON structural.revision_info TO postgres;
         </sql>
     </changeSet>
 

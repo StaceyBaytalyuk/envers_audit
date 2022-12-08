@@ -5,7 +5,6 @@ import org.hibernate.envers.RevisionType;
 
 import java.util.UUID;
 
-//@Table(name = "customer_aud", schema = "structural") // необязательно писать
 public record CustomerHistory(
         UUID customerId,
         String customerName, // и другие поля, чьи изменения нужно отобразить

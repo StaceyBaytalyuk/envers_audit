@@ -4,17 +4,17 @@
 
     <changeSet id="1613158" author="dn021299baa" runOnChange="true">
         <sql>
-            CREATE TABLE if not exists structural.customer_aud
+            CREATE TABLE if not exists structural.customer_audit
             (
                 customer_id text not null,
                 name text not null,
-                rev bigint not null,
-                revtype smallint not null
+                revision_number bigint not null,
+                revision_type smallint not null
             );
 
-            COMMENT ON TABLE structural.customer_aud IS 'Історія редагування даних клієнта';
-            ALTER TABLE structural.customer_aud OWNER TO postgres;
-            GRANT SELECT,UPDATE,DELETE,INSERT ON structural.customer_aud TO postgres;
+            COMMENT ON TABLE structural.customer_audit IS 'Історія редагування даних клієнта';
+            ALTER TABLE structural.customer_audit OWNER TO postgres;
+            GRANT SELECT,UPDATE,DELETE,INSERT ON structural.customer_audit TO postgres;
         </sql>
     </changeSet>
 
