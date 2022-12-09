@@ -1,12 +1,12 @@
 package org.example.dao.audit.model;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.MappedSuperclass;
-import jakarta.persistence.Temporal;
-import jakarta.persistence.TemporalType;
+import javax.persistence.Column;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.MappedSuperclass;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -16,7 +16,7 @@ import org.hibernate.envers.RevisionTimestamp;
 
 import java.io.Serial;
 import java.io.Serializable;
-import java.time.LocalDateTime;
+import java.util.Date;
 
 @MappedSuperclass
 @Data
@@ -36,5 +36,5 @@ public class CustomRevisionEntity implements Serializable {
     @RevisionTimestamp
     @Temporal(TemporalType.TIMESTAMP)
     @Column(name = "revision_timestamp")
-    private LocalDateTime timestamp;
+    private Date timestamp;
 }

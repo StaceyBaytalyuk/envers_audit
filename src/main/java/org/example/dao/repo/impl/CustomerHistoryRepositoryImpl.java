@@ -1,7 +1,7 @@
 package org.example.dao.repo.impl;
 
-import jakarta.persistence.EntityManager;
-import jakarta.persistence.PersistenceContext;
+import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
 import org.example.dao.audit.query.AuditQueryResult;
 import org.example.dao.audit.query.AuditQueryUtils;
 import org.example.dao.entity.CustomerEntity;
