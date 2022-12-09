@@ -1,7 +1,5 @@
 package org.example.controller;
 
-import jakarta.validation.Valid;
-import jakarta.validation.constraints.NotNull;
 import lombok.RequiredArgsConstructor;
 import org.example.controller.model.CreateCustomerRequest;
 import org.example.controller.model.IdResponse;
@@ -17,6 +15,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
+import javax.validation.Valid;
+import javax.validation.constraints.NotNull;
 import java.util.UUID;
 
 import static org.springframework.util.MimeTypeUtils.APPLICATION_JSON_VALUE;
