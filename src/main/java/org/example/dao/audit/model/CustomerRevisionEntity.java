@@ -1,29 +1,33 @@
 package org.example.dao.audit.model;
 
-import javax.persistence.Column;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.MappedSuperclass;
-import javax.persistence.Temporal;
-import javax.persistence.TemporalType;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.hibernate.envers.RevisionEntity;
 import org.hibernate.envers.RevisionNumber;
 import org.hibernate.envers.RevisionTimestamp;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 import java.io.Serial;
 import java.io.Serializable;
 import java.util.Date;
 
-@MappedSuperclass
 @Data
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class CustomRevisionEntity implements Serializable {
+@Entity
+@RevisionEntity
+@Table(schema = "structural", name = "revision_info")
+public class CustomerRevisionEntity implements Serializable {
     @Serial
     private static final long serialVersionUID = 1L;
 

@@ -5,7 +5,7 @@ import lombok.ToString;
 import org.example.controller.model.CreateCustomerRequest;
 import org.example.converter.CustomerConverter;
 import org.example.dao.audit.AuditAction;
-import org.example.dao.audit.model.CustomRevisionEntity;
+import org.example.dao.audit.model.CustomerRevisionEntity;
 import org.example.dao.entity.CustomerEntity;
 import org.example.dao.entity.CustomerHistoryEntity;
 import org.example.dao.repo.CustomerHistoryRepository;
@@ -60,7 +60,7 @@ public class CustomerService {
         List<CustomerHistoryEntity> history = historyRepository.listCustomerRevisions(id);
         System.out.println("++++++++++++++++++++++++++");
         history.forEach(x -> {
-            CustomRevisionEntity rev = x.revisionInfo();
+            CustomerRevisionEntity rev = x.revisionInfo();
             String action = AuditAction.getActionByCode(x.revisionType().getRepresentation()).getName();
             System.out.println("revision №" + rev.getNumber() + ", " + action + " a customer at " + rev.getTimestamp());
             System.out.println(x.name() + " from " + x.city() + ", id=" + x.customerId());

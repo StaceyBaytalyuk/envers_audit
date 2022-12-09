@@ -1,7 +1,7 @@
 package org.example.dao.audit.query;
 
 import lombok.NoArgsConstructor;
-import org.example.dao.audit.model.CustomRevisionEntity;
+import org.example.dao.audit.model.CustomerRevisionEntity;
 import org.hibernate.envers.RevisionType;
 
 @NoArgsConstructor
@@ -21,9 +21,9 @@ public class AuditQueryResultUtils {
             entity = type.cast(item[0]);
         }
 
-        CustomRevisionEntity revision = null;
-        if (item[1] instanceof CustomRevisionEntity) {
-            revision = (CustomRevisionEntity) item[1];
+        CustomerRevisionEntity revision = null;
+        if (item[1] instanceof CustomerRevisionEntity) {
+            revision = (CustomerRevisionEntity) item[1];
         }
 
         RevisionType revisionType = null;
